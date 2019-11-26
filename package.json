@@ -1,9 +1,9 @@
 {
-	"publisher": "ssll",
 	"name": "myvscodeex",
 	"displayName": "myvscodeex",
 	"description": "",
 	"version": "0.0.1",
+	"publisher": "ssll",
 	"engines": {
 		"vscode": "^1.40.0"
 	},
@@ -13,7 +13,7 @@
 	"activationEvents": [
 		"onCommand:extension.helloWorld"
 	],
-	"main": "./out/extension.js",
+	"main": "./dist/extension",
 	"contributes": {
 		"commands": [
 			{
@@ -23,7 +23,9 @@
 		]
 	},
 	"scripts": {
-		"vscode:prepublish": "npm run compile",
+		"vscode:prepublish": "webpack --mode production",
+		"webpack": "webpack --mode development",
+    "webpack-dev": "webpack --mode development --watch",
 		"compile": "tsc -p ./",
 		"watch": "tsc -watch -p ./",
 		"pretest": "npm run compile",
@@ -36,9 +38,12 @@
 		"@types/vscode": "^1.40.0",
 		"glob": "^7.1.5",
 		"mocha": "^6.2.2",
+		"ts-loader": "^6.2.1",
 		"tslint": "^5.20.0",
 		"typescript": "^3.6.4",
 		"vsce": "^1.69.0",
-		"vscode-test": "^1.2.2"
+		"vscode-test": "^1.2.2",
+		"webpack": "^4.41.2",
+		"webpack-cli": "^3.3.10"
 	}
 }
